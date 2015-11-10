@@ -21,10 +21,6 @@ def showMenu(menu, message, option):
 		print(key+':', value, end = " | ")
 	print('\n----------------------------------------------------------------')
 	return option
-def instructions(instructions):
+def showInstructions(instructions):
 	os.system('more '+instructions)
-showMovie('movie.txt')
-menu = {'a':1,'b':3}
-showMenu(menu, "hola")
-instructions('movie.txt')
-	
+
