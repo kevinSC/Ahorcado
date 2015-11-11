@@ -1,5 +1,6 @@
 import time
 import os
+from os import listdir
 def showMovie(movie):
 	''' recibe un archivo .txt con imagenes en codigo ascii y lo despliega
 		en la pantalla de la consola mediante diapositivas
@@ -18,9 +19,18 @@ def showMenu(menu, message, option):
 	print(message)
 	print('----------------------------------------------------------------')
 	for key, value in menu.items():
-		print(key+':', value, end = " | ")
+		print(value+':', key, end = " | ")
 	print('\n----------------------------------------------------------------')
 	return option
 def showInstructions(instructions):
 	os.system('more '+instructions)
 
+def dirOptions(path):
+	temas = listdir(path)
+	numbes = range(1,len(temas)+1)
+	return dict(zip(numbes, temas))
+
+directorio = dirOptions('./Palabras')
+print(directorio)
+		
+	
