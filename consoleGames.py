@@ -29,8 +29,3 @@ def dirOptions(path):
 	temas = listdir(path)
 	numbes = range(1,len(temas)+1)
 	return dict(zip(numbes, temas))
-
-directorio = dirOptions('./Palabras')
-print(directorio)
-		
-	
