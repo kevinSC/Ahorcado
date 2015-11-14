@@ -71,8 +71,6 @@ def countWords(palabras, separador=','):
         return palabras.count(separador)
     else:
         return palabras.count(separador)+1
-cuento=countWords(loadWords('./Palabras/Rock'))
-print(cuento)
 #    '''
 #    Firma:
 #        (string,string) -> (int)
