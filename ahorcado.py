@@ -1,6 +1,7 @@
 import time
 import os
 from os import listdir
+#def printIntro(fileName):
 def prinIntro(movie):
     ''' recibe un archivo .txt con imagenes en codigo ascii y lo despliega
         en la pantalla de la consola mediante diapositivas
@@ -32,7 +33,6 @@ def dirFiles(path):
     temas = listdir(path)
     numbes = range(1,len(temas)+1)
     return dict(zip(numbes, temas))
-#def printIntro(fileName):
 def loadWords(path):
     '''
     Firma:
@@ -66,68 +66,13 @@ def loadWords(path):
     file.close()
     # Cadena retornada
     return words
-    
-
-
-#    '''
-#    Firma:
-#        (string)
-#
-#    Sinopsis:
-#        función que imprime el contenido de un archivo en pantalla, en este 
-#       caso, el mensaje de bienvenida al juego
-#
-#    Entradas y salidas:
-#        - inputFile: Nombre del archivo que contiene la presentación del juego
-#        - returns: None, solo imprime el archivo leído en pantalla
-#
-#    Ejemplos de uso:
-#
-#        >>> printIntro("intro.txt")
-#        ___  _                             _             +---+ 
-#       / _ \| |                           | |            |   | 
-#      / /_\ \ |__   ___  _ __ ___ __ _  __| | ___        O   |    
-#      |  _  | '_ \ / _ \| '__/ __/ _` |/ _` |/ _ \      /|\  |    
-#      | | | | | | | (_) | | | (_| (_| | (_| | (_) |     / \  |
-#      \_| |_/_| |_|\___/|_|  \___\__,_|\__,_|\___/           |  
-#                                                      =========
-#    '''
-#
-#    # Desarrolle el cuerpo de la función aquí...
-#
-#
-#
-#
-#def inputSecret():
-#    '''
-#    Firma:
-#        () -> (string)
-#
-#    Sinopsis:
-#        Función que solicita al usuario la palabra secreta
-#
-#    Entradas y salidas:
-#        - inputs: None
-#        - returns: string con la palabra secreta ingresada por el usuario
-#
-#    Ejemplos de uso:
-#
-#        >>> p = inputSecret()
-#        Ingrese la palabra o frase oculta: UdeA
-#
-#        >>> print(p)
-#        UdeA 
-#    '''
-#
-#    # Desarrolle el cuerpo de la función aquí... 
-#
-#
-#    # Valor retornado
-#    return pSec
-#
-#
-#
-#def countWords(palabras,separador):
+def countWords(palabras, separador=','):
+    if palabras[len(palabras)-1] == separador:
+        return palabras.count(separador)
+    else:
+        return palabras.count(separador)+1
+cuento=countWords(loadWords('./Palabras/Rock'))
+print(cuento)
 #    '''
 #    Firma:
 #        (string,string) -> (int)
