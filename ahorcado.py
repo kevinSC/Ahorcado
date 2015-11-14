@@ -33,13 +33,49 @@ def dirFiles(path):
     numbes = range(1,len(temas)+1)
     return dict(zip(numbes, temas))
 #def printIntro(fileName):
+def loadWords(path):
+    '''
+    Firma:
+        (string) -> (string)
+
+    Sinopsis:
+        Función que solicita el nombre de un archivo cualquiera y devuelve una cadena 
+        de caracteres con su contenido
+
+    Entradas y salidas:
+        - filename: string que contiene el nombre del archivo con las palabras secretas
+        - returns: string con todas las palabras secretas
+
+    Ejemplos de uso:
+        >>> loadWords("superHeroes.txt")
+        'capitan centella, capitan planeta, batman, superman, robin, mujer maravilla, aquaman, flash,
+        cyborg, capitan marciano, linterna verde,flash gordon, liga de la justicia, defensores de la 
+        tierra, el fantasma, spider man, hulk, thor, iron man, los vengadores, robocop, terminator, 
+        capitan america, hombre hormiga, la avispa, goku, vegeta, gohan, piccolo, trunks, spawn, 
+        tintin, ghost rider, blade, tortugas ninja, soldado del invierno, el castigador, 
+        el predicador, leonidas, kick ass, el comediante, el chapulin colorado, wolverine,
+        flecha verde, el profesor super o, los autobots, robin hood\n'
+
+    '''
+
+    # Desarrolle el cuerpo de la función aquí... 
+    words=''
+    file = open(path)
+    for line in file:
+        words += line
+    file.close()
+    # Cadena retornada
+    return words
+    
+
+
 #    '''
 #    Firma:
 #        (string)
 #
 #    Sinopsis:
 #        función que imprime el contenido de un archivo en pantalla, en este 
-#		caso, el mensaje de bienvenida al juego
+#       caso, el mensaje de bienvenida al juego
 #
 #    Entradas y salidas:
 #        - inputFile: Nombre del archivo que contiene la presentación del juego
@@ -90,37 +126,6 @@ def dirFiles(path):
 #    return pSec
 #
 #
-#def loadWords(fileName):
-#    '''
-#    Firma:
-#        (string) -> (string)
-#
-#    Sinopsis:
-#        Función que solicita el nombre de un archivo cualquiera y devuelve una cadena 
-#        de caracteres con su contenido
-#
-#    Entradas y salidas:
-#        - filename: string que contiene el nombre del archivo con las palabras secretas
-#        - returns: string con todas las palabras secretas
-#
-#    Ejemplos de uso:
-#        >>> loadWords("superHeroes.txt")
-#        'capitan centella, capitan planeta, batman, superman, robin, mujer maravilla, aquaman, flash,
-#        cyborg, capitan marciano, linterna verde,flash gordon, liga de la justicia, defensores de la 
-#        tierra, el fantasma, spider man, hulk, thor, iron man, los vengadores, robocop, terminator, 
-#        capitan america, hombre hormiga, la avispa, goku, vegeta, gohan, piccolo, trunks, spawn, 
-#        tintin, ghost rider, blade, tortugas ninja, soldado del invierno, el castigador, 
-#        el predicador, leonidas, kick ass, el comediante, el chapulin colorado, wolverine,
-#        flecha verde, el profesor super o, los autobots, robin hood\n'
-#
-#    '''
-#
-#    # Desarrolle el cuerpo de la función aquí... 
-#
-#
-#
-#	# Cadena retornada
-#    return palabras
 #
 #def countWords(palabras,separador):
 #    '''
@@ -290,4 +295,3 @@ def dirFiles(path):
 #    '''
 #
 #    # Desarrolle el cuerpo de la función aquí...
-showMenu({1:"instructions", 2:"menu", 2:"modo de juego"})
