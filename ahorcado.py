@@ -1,13 +1,14 @@
 import time
 import os
 from os import listdir
-#def printIntro(fileName):
 def prinIntro(movie):
-    ''' recibe un archivo .txt con imagenes en codigo ascii y lo despliega
+    ''' 
+        recibe un archivo .txt con imagenes en codigo ascii y lo despliega
         en la pantalla de la consola mediante diapositivas
         
         NOTA: El archivo debe ser una imagenes en codi ascii y cada diapositiva
-        y es separada por la palabra NEXT'''
+        y es separada por la palabra NEXT
+    '''
     file = open(movie)
     for line in file:
         if line == 'NEXT\n':
@@ -18,9 +19,9 @@ def prinIntro(movie):
     file.close()
 def showMenu(menu, message = ""):
     '''
-    Esta funcion imprime un menu con con sus respectivas opcines.
-    recibe como paramentros un diccionario de opciones deseadas a desplegar
-    y un string como mensaje
+        Esta funcion imprime un menu con con sus respectivas opcines.
+        recibe como paramentros un diccionario de opciones deseadas a desplegar
+        y un string como mensaje
     '''
     print(message)
     print('----------------------------------------------------------------')
@@ -30,109 +31,72 @@ def showMenu(menu, message = ""):
 def showInstructions(instructions):
     os.system('more '+instructions)
 def dirFiles(path):
+    '''
+        Esta funcion recibe la direccion de un directorio
+        retorna sus archivos en un diccionario enumerado
+    '''
     temas = listdir(path)
     numbes = range(1,len(temas)+1)
     return dict(zip(numbes, temas))
 def loadWords(path):
     '''
-    Firma:
-        (string) -> (string)
-
-    Sinopsis:
-        Función que solicita el nombre de un archivo cualquiera y devuelve una cadena 
-        de caracteres con su contenido
-
-    Entradas y salidas:
-        - filename: string que contiene el nombre del archivo con las palabras secretas
-        - returns: string con todas las palabras secretas
-
-    Ejemplos de uso:
-        >>> loadWords("superHeroes.txt")
-        'capitan centella, capitan planeta, batman, superman, robin, mujer maravilla, aquaman, flash,
-        cyborg, capitan marciano, linterna verde,flash gordon, liga de la justicia, defensores de la 
-        tierra, el fantasma, spider man, hulk, thor, iron man, los vengadores, robocop, terminator, 
-        capitan america, hombre hormiga, la avispa, goku, vegeta, gohan, piccolo, trunks, spawn, 
-        tintin, ghost rider, blade, tortugas ninja, soldado del invierno, el castigador, 
-        el predicador, leonidas, kick ass, el comediante, el chapulin colorado, wolverine,
-        flecha verde, el profesor super o, los autobots, robin hood\n'
-
+        Firma:
+            (string) -> (string)
+    
+        Sinopsis:
+            Función que solicita el nombre de un archivo cualquiera y devuelve una cadena 
+            de caracteres con su contenido
+    
+        Entradas y salidas:
+            - filename: string que contiene el nombre del archivo con las palabras secretas
+            - returns: string con todas las palabras secretas
+    
+        Ejemplos de uso:
+            >>> loadWords("superHeroes.txt")
+            'capitan centella, capitan planeta, batman, superman, robin, mujer maravilla, aquaman, flash,
+            cyborg, capitan marciano, linterna verde,flash gordon, liga de la justicia, defensores de la 
+            tierra, el fantasma, spider man, hulk, thor, iron man, los vengadores, robocop, terminator, 
+            capitan america, hombre hormiga, la avispa, goku, vegeta, gohan, piccolo, trunks, spawn, 
+            tintin, ghost rider, blade, tortugas ninja, soldado del invierno, el castigador, 
+            el predicador, leonidas, kick ass, el comediante, el chapulin colorado, wolverine,
+            flecha verde, el profesor super o, los autobots, robin hood\n'
     '''
-
-    # Desarrolle el cuerpo de la función aquí... 
-    words=''
     file = open(path)
+    words=''
     for line in file:
         words += line
     file.close()
-    # Cadena retornada
     return words
-def countWords(palabras, separador=','):
-    if palabras[len(palabras)-1] == separador:
-        return palabras.count(separador)
-    else:
-        return palabras.count(separador)+1
-#    '''
-#    Firma:
-#        (string,string) -> (int)
-#
-#    Sinopsis:
-#        Función cuenta la cantidad de palabras o frases disponibles en una cadena
-#
-#    Entradas y salidas:
-#        - palabras: Conjunto de palabras o frases separadas por un delimitador
-#        - separador: Delimitador que separa una palabra o frase de otra dentro de la cadena de entrada (palabras)
-#        - returns: cantidad de palabras secretas
-#
-#    Ejemplos de uso:
-#        >>> materias = 'español,calculo,geometria vectorial,geometria euclidiana'
-#        >>> countWords(materias,',')
-#        4
-#
-#        >>> countWords('gallo-gallina','-')
-#        2
-#        '''
-#
-#    # Desarrolle el cuerpo de la función aquí...
-#
-#	# Retorno de la cantidad de palabras	
-#    return conta   
-#
-#def pickWord(palabras,separador):
-#    '''
-#    Firma:
-#        (string,string) -> (string)
-#
-#    Sinopsis:
-#        Función que permite seleccionar una palabra o frase secreta correspondiente a una posicion 
-#        dada de un conjunto de palabras separadas por un delimitador.  
-#
-#    Entradas y salidas:
-#        - palabras: Conjunto de palabras o frases secretas separadas por un delimitador
-#        - separador: Delimitador que separa una palabra o frase secreta de otra
-#        - returns: Palabra o frase de la posiciónon elegida
-#
-#    Ejemplos de uso:
-#        >>> x = 'homero_marge_bart_lisa_maggie' 
-#        >>> pickWord(x,'_')
-#        'homero'
-#
-#        >>> palabra = pickWord('marcos, lucas, mateo, juan',',')
-#        >>> print(palabra)
-#        'mateo'
-        #
-#    '''
-#    # Desarrolle el cuerpo de la función aquí...
-#    import random
-#
-#
-#    # Eliminación de espacios de la palabra...
-#    palabra = palabra.lstrip()
-#    palabra = palabra.rstrip()
-#
-#    # Retorno de la palabra elegida
-#    return palabra
-#
-#
+
+def pickWord(words, separador=','):
+    '''
+        Firma:
+            (string,string) -> (string)
+    
+        Sinopsis:
+            Función que permite seleccionar una palabra o frase secreta correspondiente a una posicion 
+            dada de un conjunto de palabras separadas por un delimitador.  
+    
+        Entradas y salidas:
+            - palabras: Conjunto de palabras o frases secretas separadas por un delimitador
+            - separador: Delimitador que separa una palabra o frase secreta de otra
+            - returns: Palabra o frase de la posiciónon elegida
+    
+        Ejemplos de uso:
+            >>> x = 'homero_marge_bart_lisa_maggie' 
+            >>> pickWord(x,'_')
+            'homero'
+    
+            >>> palabra = pickWord('marcos, lucas, mateo, juan',',')
+            >>> print(palabra)
+            'mateo'      
+    '''
+    import random 
+    words = words.split(separador)
+    words = words[random.randint(0,len(words)-1)]
+    words = words.strip()
+    return words
+print(pickWord('hola,mundoyo,soy,kevin,steven, \ncufiño ,robayo'))
 #def obtenerParteAdivinada(palabraSecreta,letrasIntentadas):
 #    '''
 #    Firma:
