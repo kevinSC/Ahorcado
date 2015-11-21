@@ -1,7 +1,15 @@
-import time
-import os
-from os import listdir
+def findCharacter(word,letter):
+    lugar = -1
+    characters=[]
+    place = word[lugar+1:].find(letter)
+    while place != -1:
+        lugar += place + 1
+        place = (word[lugar+1:].find(letter)) 
+        characters.append(lugar)
+    return tuple(characters)
 def prinIntro(movie):
+    import time
+    import os
     ''' 
         recibe un archivo .txt con imagenes en codigo ascii y lo despliega
         en la pantalla de la consola mediante diapositivas
@@ -31,6 +39,7 @@ def showMenu(menu, message = ""):
 def showInstructions(instructions):
     os.system('more '+instructions)
 def dirFiles(path):
+    from os import listdir
     '''
         Esta funcion recibe la direccion de un directorio
         retorna sus archivos en un diccionario enumerado
@@ -67,7 +76,6 @@ def loadWords(path):
         words += line
     file.close()
     return words
-
 def pickWord(words, separador=','):
     '''
         Firma:
@@ -96,8 +104,7 @@ def pickWord(words, separador=','):
     words = words[random.randint(0,len(words)-1)]
     words = words.strip()
     return words
-print(pickWord('hola,mundoyo,soy,kevin,steven, \ncufiño ,robayo'))
-#def obtenerParteAdivinada(palabraSecreta,letrasIntentadas):
+def obtenerParteAdivinada(palabraSecreta,letrasIntentadas):
 #    '''
 #    Firma:
 #        (string,list) -> (string)
@@ -120,12 +127,20 @@ print(pickWord('hola,mundoyo,soy,kevin,steven, \ncufiño ,robayo'))
 #        '_ _ _ _ _'  
 #
 #    '''
-#
-#    # Desarrolle el cuerpo de la función aquí...
-#
-#    # Retorno de la palabra elegida
-#    return pPrint       
-#
+    size = len(palabraSecreta)
+    spaces = '_ '*size
+    spaces = spaces[:-1]
+    lugar = -1
+    for letra in letrasIntentadas:
+        findCharacter(palabraSecreta,letra)
+    # Desarrolle el cuerpo de la función aquí...
+
+    # Retorno de la palabra elegida
+    #return pPrint
+
+lista = findCharacter(' hola mamadsfjdf sdsad sadasd ',' ')
+print(lista)
+#obtenerParteAdivinada("hola mamadsfjdf",['a'])
 #def obtenerLetrasDisponibles(letrasIntentadas):
 #    '''
 #    Firma:
