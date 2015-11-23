@@ -103,7 +103,7 @@ def pickWord(words, separador=','):
     words = words.split(separador)
     words = words[random.randint(0,len(words)-1)]
     words = words.strip()
-    return words
+    return words.lo
 def obtenerParteAdivinada(palabraSecreta,letrasIntentadas):
 #    '''
 #    Firma:
@@ -128,18 +128,20 @@ def obtenerParteAdivinada(palabraSecreta,letrasIntentadas):
 #
 #    '''
     size = len(palabraSecreta)
+    letrasIntentadas.insert(0, ' ')
     spaces = '_ '*size
-    spaces = spaces[:-1]
-    lugar = -1
     for letra in letrasIntentadas:
-        findCharacter(palabraSecreta,letra)
+    	for lugar in findCharacter(palabraSecreta, letra):
+    		spaces = spaces[:2*lugar] + letra +spaces[(2*lugar)+1:]
+    return spaces[:-1]
+plamabra=obtenerParteAdivinada('hola como estan',[ 'a','h', 'o'])
+print(plamabra)
+print(len(plamabra))
+
     # Desarrolle el cuerpo de la función aquí...
 
     # Retorno de la palabra elegida
     #return pPrint
-
-lista = findCharacter(' hola mamadsfjdf sdsad sadasd ',' ')
-print(lista)
 #obtenerParteAdivinada("hola mamadsfjdf",['a'])
 #def obtenerLetrasDisponibles(letrasIntentadas):
 #    '''
