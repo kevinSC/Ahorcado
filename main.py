@@ -58,4 +58,7 @@ while gameON:
 		verifica = ahorcado.verificarLetraIngresada(letrica,inputword)
 	inputword.append(letrica)
 	os.system('clear')
-if win
+if win:
+	print("felicitaciones ganaste")
+else:
+	print('Lo sentimos has perdido.\nla palabra es', word)
