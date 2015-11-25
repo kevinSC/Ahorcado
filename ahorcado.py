@@ -7,7 +7,7 @@ def findCharacter(word,letter):
         place = (word[lugar+1:].find(letter)) 
         characters.append(lugar)
     return tuple(characters)
-def printIntro(movie):
+def printIntro(movie, stop=False,number=0):
     ''' 
         recibe un archivo .txt con imagenes en codigo ascii y lo despliega
         en la pantalla de la consola mediante diapositivas
@@ -18,13 +18,25 @@ def printIntro(movie):
     import time
     import os
     file = open(movie)
-    for line in file:
-        if line == 'NEXT\n':
-            time.sleep(0.0625)
-            os.system('clear')
-        else:
-            print(line, end = '')
-    file.close()
+    if not stop:
+        for line in file:
+            if line == 'NEXT\n':
+                time.sleep(0.0625)
+                os.system('clear')
+            else:
+                print(line, end = '')
+        file.close()
+    else:
+        pos = [0]
+        lines = file.readlines()
+        for x,y in zip(lines,range(0,len(lines))):
+            if x == 'NEXT\n':
+                pos.append(y)
+        number = (len(pos)-1) - number
+        print(pos)
+        for linea in lines[pos[number-1]+1:pos[number]]:
+            print(linea, end='')
+
 def showMenu(menu, message = ""):
     '''
         Esta funcion imprime un menu con con sus respectivas opcines.
@@ -143,7 +155,8 @@ def obtenerParteAdivinada(palabraSecreta,letrasIntentadas):
         	>>> obtenerParteAdivinada('frodo', [])
         	'_ _ _ _ _'  
     '''
-    letrasIntentadas.insert(0, ' ')
+    if not (letrasIntentadas[0] ==' '):
+        letrasIntentadas.insert(0, ' ')
     spaces = '_ '*len(palabraSecreta)
     for letra in letrasIntentadas:
     	for lugar in findCharacter(palabraSecreta, letra):
@@ -166,6 +179,7 @@ def obtenerLetrasDisponibles(letrasIntentadas):
         	>>> print obtenerLetrasDisponibles(letrasIntentadas)
         	cdeghijklmnopqrtuvwxyz
     '''
+    import string
     alfabeto = string.ascii_lowercase
     resto= ""
     for x in alfabeto:

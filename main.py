@@ -4,7 +4,9 @@ import time
 ahorcado.printIntro('movie.txt')
 ahorcado.showMenu({1:'Instrucciones',2:'Modos de juego'},'Por favor ingresa el numero de la opción que deseas:')
 lives = 8
-inputword = []
+inputword = [" "]
+letrica =""
+win = False
 gameON = True
 option = ahorcado.wrongImput({1:'Instrucciones',2:'Modos de juego'})
 while option == 1:
@@ -32,27 +34,28 @@ print('ok Comenzamos Jugador 1\n ingresa una letra despues de los 2 puntos')
 time.sleep(3)
 os.system('clear')
 while gameON:
-	disponibles = ahorcado.obtenerLetrasDisponibles(inputword)
+	if word.find(letrica)== -1:
+		lives -= 1
+	ahorcado.printIntro('picture.txt',True,lives)
 	print(ahorcado.obtenerParteAdivinada(word,inputword))
-	print('Las letras disponibles son:\n',disponibles)
+	disponibles = ahorcado.obtenerLetrasDisponibles(inputword)
+	ahorcado.showMenu({str(lives):'vidas',disponibles:'Letras Disponibles'})
+	win = ahorcado.palabraAdivinada(word,inputword)
+	gameON = not win
+	if lives == 0:
+		gameON = False
+		break
+	elif not gameON:
+		break
 	letrica=input(':')
 	letrica = letrica.lower()
 	verifica = ahorcado.verificarLetraIngresada(letrica,inputword)
+	print(verifica)
 	while verifica:
 		print('por favor ingresa otra letra diferente, la', letrica, 'ya la ingresaste')
 		letrica=input(':')
 		letrica = letrica.lower()
 		verifica = ahorcado.verificarLetraIngresada(letrica,inputword)
 	inputword.append(letrica)
-	if word.find(letrica)== -1:
-		lives -= 1
-		print(lives)
-	if lives == 0:
-		gameON = False
-	else:
-		gameON = not ahorcado.palabraAdivinada(word,inputword)
-	#os.system('clear')
-	
-
-
-	
+	os.system('clear')
+if win
