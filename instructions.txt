@@ -1,59 +1,29 @@
+  ___  _                             _             +---+ 
+ / _ \| |                           | |            |   | 
+/ /_\ \ |__   ___  _ __ ___ __ _  __| | ___        O   |    
+|  _  | '_ \ / _ \| '__/ __/ _` |/ _` |/ _ \      /|\  |    
+| | | | | | | (_) | | | (_| (_| | (_| | (_) |     / \  |
+\_| |_/_| |_|\___/|_|  \___\__,_|\__,_|\___/           |  
+                                                =========
+
+
  Hola !!!!!!!!!
  Este es el juego del ahorcado
 
+¿De que trata?
+Este juego consiste en adivinar una o mas palabras ingresando letras en una computadora
 
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
-asdfasedfsdfsdfsdfsdfdf
+¿Como Jugar?
+
+	1.	Ingrese a modos de juego tecelando el numero 2
+	2.	Oprime 1 si quieres jugar solo o 2 si deseas divertirte con un compañero
+
+El Juego se acaba si logras adivinar todas las letras o si tus vidas se acaban,
+por lo cual el programa preguntara si te apetece jugar nuevamente.
+
+si oprimes 'y' el juego reiniciara 
+si oprimes cualquier otra tecla este terminara su ejecución
+
+
+
+
