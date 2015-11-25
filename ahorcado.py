@@ -196,7 +196,7 @@ def verificarLetraIngresada(letra,letrasIntentadas):
         	>>> verificarLetraIngresada('x',['v', 'w', 'x', 'y', 'z'])
         	True
     '''  
-    if letrasIntentadas.count(letra) > 0:
+    if letra in letrasIntentadas:
     	return True
     else:
     	return False
