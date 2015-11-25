@@ -7,9 +7,7 @@ def findCharacter(word,letter):
         place = (word[lugar+1:].find(letter)) 
         characters.append(lugar)
     return tuple(characters)
-def prinIntro(movie):
-    import time
-    import os
+def printIntro(movie):
     ''' 
         recibe un archivo .txt con imagenes en codigo ascii y lo despliega
         en la pantalla de la consola mediante diapositivas
@@ -17,6 +15,8 @@ def prinIntro(movie):
         NOTA: El archivo debe ser una imagenes en codi ascii y cada diapositiva
         y es separada por la palabra NEXT
     '''
+    import time
+    import os
     file = open(movie)
     for line in file:
         if line == 'NEXT\n':
@@ -36,14 +36,31 @@ def showMenu(menu, message = ""):
     for key, value in menu.items():
         print(value+':', key, end = " | ")
     print('\n----------------------------------------------------------------')
-def showInstructions(instructions):
+def showInstructions(instructions='./instructions.txt'):
+    import os
     os.system('more '+instructions)
-def dirFiles(path):
+def dirFiles(path='./Palabras'):
+    '''
+    	Firma:
+
+			(string) -> (directory)
+
+		Sinopsis:
+
+        	Esta funcion recibe la direccion de un directorio y
+        	retorna sus archivos en un diccionario enumerado
+
+        Entradas y salidas:
+
+        	- path: String con la ruta de una carpeta
+        	- returns: Un directorio enumerado con todos los ficheros dentro de este
+
+        Ejemplos de uso:
+         	>>> ahorcado.dirFiles('./')
+         	{1: '.gitignore', 2: 'Palabras', 3: 'README.md', 4: 'ahorcado.py', 5: 'main.py', 6: 'movie.txt', 7: '.pro', 8: '.git', 9: 'i
+         	ntro.txt', 10: '__pycache__'}
+    '''
     from os import listdir
-    '''
-        Esta funcion recibe la direccion de un directorio
-        retorna sus archivos en un diccionario enumerado
-    '''
     temas = listdir(path)
     numbes = range(1,len(temas)+1)
     return dict(zip(numbes, temas))
@@ -51,7 +68,6 @@ def loadWords(path):
     '''
         Firma:
             (string) -> (string)
-    
         Sinopsis:
             Función que solicita el nombre de un archivo cualquiera y devuelve una cadena 
             de caracteres con su contenido
@@ -75,7 +91,7 @@ def loadWords(path):
     for line in file:
         words += line
     file.close()
-    return words
+    return words.lower()
 def pickWord(words, separador=','):
     '''
         Firma:
@@ -103,119 +119,132 @@ def pickWord(words, separador=','):
     words = words.split(separador)
     words = words[random.randint(0,len(words)-1)]
     words = words.strip()
-    return words.lo
+    words = words.lower()
+    return words
 def obtenerParteAdivinada(palabraSecreta,letrasIntentadas):
-#    '''
-#    Firma:
-#        (string,list) -> (string)
-#
-#    Sinopsis:
-#        Imprime la parte de la cadena que ha sido adivinada.  
-#
-#    Entradas y salidas:
-#        - palabraSecreta: string, palabra que el usuario esta adivinando
-#        - letrasIntentadas: list, letras intentadas por el usuario para adivinar la palabra
-#        - returns: string, compuesto de letras y caracteres raya bajo que representan las letras aun no adivinadas
-#
-#    Ejemplos de uso:
-#        >>> palabraSecreta = 'perro'
-#        >>> letrasIntentadas = ['a', 'e', 'i', 'o', 'u', 's', 'p']
-#        >>> print obtenerParteAdivinada(palabraSecreta, letrasIntentadas)
-#        'p e _ _ o'
-#
-#        >>> obtenerParteAdivinada('frodo', [])
-#        '_ _ _ _ _'  
-#
-#    '''
-    size = len(palabraSecreta)
+    '''
+    	Firma:
+        	(string,list) -> (string)
+	
+    	Sinopsis:
+        	Imprime la parte de la cadena que ha sido adivinada.  
+	
+    	Entradas y salidas:
+        	- palabraSecreta: string, palabra que el usuario esta adivinando
+        	- letrasIntentadas: list, letras intentadas por el usuario para adivinar la palabra
+        	- returns: string, compuesto de letras y caracteres raya bajo que representan las letras aun no adivinadas
+	
+    	Ejemplos de uso:
+        	>>> palabraSecreta = 'perro'
+        	>>> letrasIntentadas = ['a', 'e', 'i', 'o', 'u', 's', 'p']
+        	>>> print obtenerParteAdivinada(palabraSecreta, letrasIntentadas)
+        	'p e _ _ o'
+	
+        	>>> obtenerParteAdivinada('frodo', [])
+        	'_ _ _ _ _'  
+    '''
     letrasIntentadas.insert(0, ' ')
-    spaces = '_ '*size
+    spaces = '_ '*len(palabraSecreta)
     for letra in letrasIntentadas:
     	for lugar in findCharacter(palabraSecreta, letra):
     		spaces = spaces[:2*lugar] + letra +spaces[(2*lugar)+1:]
     return spaces[:-1]
-plamabra=obtenerParteAdivinada('hola como estan',[ 'a','h', 'o'])
-print(plamabra)
-print(len(plamabra))
-
-    # Desarrolle el cuerpo de la función aquí...
-
-    # Retorno de la palabra elegida
-    #return pPrint
-#obtenerParteAdivinada("hola mamadsfjdf",['a'])
-#def obtenerLetrasDisponibles(letrasIntentadas):
-#    '''
-#    Firma:
-#        (list) -> (string)
-#
-#    Sinopsis:
-#        Devuelve las palabras que no se han empleado en los turnos.  
-#
-#    Entradas y salidas:
-#        - letrasIntentadas: list, letras intentadas por el usuario para adivinar la palabra
-#        - returns: string, compuesto de letras que no han sido ingresado
-#
-#    Ejemplos de uso:
-#        >>> letrasIntentadas = ['a', 'b', 'f', 's']
-#        >>> print obtenerLetrasDisponibles(letrasIntentadas)
-#        cdeghijklmnopqrtuvwxyz
-#
-#    '''
-#
-#    # Desarrolle el cuerpo de la función aquí...
-#    import string
-#
-#
-#	# Retorno de las palabras del alfabeto que aun no han sido usadas
-#    return resto
-#
-#def verificarLetraIngresada(letra,letrasIntentadas):
-#    '''
-#    Firma:
-#        (bool) -> (string,list)
-#
-#    Sinopsis:
-#        Devuelve True si la letra ingresada se encuentra dentro de la lista de palabras intentadas.  
-#
-#    Entradas y salidas:
-#        - letra: Letra a verificar
-#        - letrasIntentadas: Lista con las letras a comparar
-#        - returns: La función devuelve False si ninguna la letra no se encuentra en ninguna de la 
-#                   lista. En caso contrario, devuelve True.
-#
-#    Ejemplos de uso:
-#        >>> letrasIntentadas = ['a', 'b', 'f', 's']
-#        >>> verificarLetraIngresada('z',letrasIntentadas)
-#        False
-#
-#        >>> verificarLetraIngresada('x',['v', 'w', 'x', 'y', 'z'])
-#        True
-#
-#    '''
-#
-#    # Desarrolle el cuerpo de la función aquí... 
-#
-#def palabraAdivinada(palabra,letrasIntentadas):
-#    '''
-#    Firma:
-#        (bool) -> (string,list)
-#
-#    Sinopsis:
-#        Devuelve True si algunas o todas las letras de la lista pueden formar la palabra.  
-#
-#    Entradas y salidas:
-#        - palabra: Palabra o frase a verificar
-#        - letrasIntentadas: Lista con las letras a comparar
-#        - returns: Devuelve True si con las letras de la lista pueden formar la palabra y False, en 
-#             caso contrario.
-#
-#    Ejemplos de uso:
-#        >>> palabraAdivinada('bilbo',['b','s','n','l','i','o'])
-#        True
-#
-#        >>> palabraAdivinada('karman',['c','a','m',])
-#        False
-#
-#    '''
-#
-#    # Desarrolle el cuerpo de la función aquí...
+def obtenerLetrasDisponibles(letrasIntentadas):
+    '''
+    	Firma:
+        	(list) -> (string)
+	
+    	Sinopsis:
+        	Devuelve las palabras que no se han empleado en los turnos.  
+	
+    	Entradas y salidas:
+        	- letrasIntentadas: list, letras intentadas por el usuario para adivinar la palabra
+        	- returns: string, compuesto de letras que no han sido ingresado
+	
+    	Ejemplos de uso:
+        	>>> letrasIntentadas = ['a', 'b', 'f', 's']
+        	>>> print obtenerLetrasDisponibles(letrasIntentadas)
+        	cdeghijklmnopqrtuvwxyz
+    '''
+    letters = list(range(97,123))
+    userLetters = []
+    Ouput = ''
+    for character in letrasIntentadas:
+    	userLetters.append(ord(character))
+    letters = list(set(letters) - set(userLetters))
+    letters = sorted(letters)
+    for x in letters:
+    	Ouput += chr(x)
+    return Ouput
+def verificarLetraIngresada(letra,letrasIntentadas):
+    '''
+    	Firma:
+        	(string,list) -> (bool)
+	
+    	Sinopsis:
+        	Devuelve True si la letra ingresada se encuentra dentro de la lista de palabras intentadas.  
+	
+    	Entradas y salidas:
+        	- letra: Letra a verificar
+        	- letrasIntentadas: Lista con las letras a comparar
+        	- returns: La función devuelve False si ninguna la letra no se encuentra en ninguna de la 
+                   	lista. En caso contrario, devuelve True.
+	
+    	Ejemplos de uso:
+        	>>> letrasIntentadas = ['a', 'b', 'f', 's']
+        	>>> verificarLetraIngresada('z',letrasIntentadas)
+        	False
+	
+        	>>> verificarLetraIngresada('x',['v', 'w', 'x', 'y', 'z'])
+        	True
+    '''  
+    if letrasIntentadas.count(letra) > 0:
+    	return True
+    else:
+    	return False
+def palabraAdivinada(palabra,letrasIntentadas):
+    '''
+    	Firma:
+        	(string,list) -> (bool)
+	
+    	Sinopsis:
+        	Devuelve True si algunas o todas las letras de la lista pueden formar la palabra.  
+	
+    	Entradas y salidas:
+        	- palabra: Palabra o frase a verificar
+        	- letrasIntentadas: Lista con las letras a comparar
+        	- returns: Devuelve True si con las letras de la lista pueden formar la palabra y False, en 
+             	caso contrario.
+	
+    	Ejemplos de uso:
+        	>>> palabraAdivinada('bilbo',['b','s','n','l','i','o'])
+        	True
+	
+        	>>> palabraAdivinada('karman',['c','a','m',])
+        	False
+    '''
+    adivino = False
+    limit = len(palabra)
+    for letra in letrasIntentadas:
+    	limit -= len(findCharacter(palabra,letra))
+    	if limit == 0:
+    		adivino = True
+    		break
+    return adivino
+def wrongImput(menu):
+	import os
+	wrong = True
+	while wrong:
+		try:
+			option = int(input(': '))
+			wrong = False
+		except ValueError:
+			os.system('clear')
+			printIntro('intro.txt')
+			showMenu(menu,'Por favor ingresa el numero de la opción que deseas:')
+			print('¿Quieres romper mi codigo?\nPiensa antes de digitar amig@')
+	return option
+def selctDir(file_number,path='./Palabras'):
+	directorio = dirFiles(path)
+	direccion = path+'/'+directorio[file_number]
+	return direccion
