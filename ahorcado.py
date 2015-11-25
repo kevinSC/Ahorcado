@@ -166,16 +166,14 @@ def obtenerLetrasDisponibles(letrasIntentadas):
         	>>> print obtenerLetrasDisponibles(letrasIntentadas)
         	cdeghijklmnopqrtuvwxyz
     '''
-    letters = list(range(97,123))
-    userLetters = []
-    Ouput = ''
-    for character in letrasIntentadas:
-    	userLetters.append(ord(character))
-    letters = list(set(letters) - set(userLetters))
-    letters = sorted(letters)
-    for x in letters:
-    	Ouput += chr(x)
-    return Ouput
+    alfabeto = string.ascii_lowercase
+    resto= ""
+    for x in alfabeto:
+        if x in letrasIntentadas:
+            resto = resto
+        else:
+            resto=resto+x
+    return resto
 def verificarLetraIngresada(letra,letrasIntentadas):
     '''
     	Firma:
